@@ -1,0 +1,96 @@
+<!DOCTYPE struts PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+"http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+    <!-- Configuration for the default package. -->
+    <package name="default" extends="struts-default">
+        <action name="">
+            <result>LoadAreaAction</result>
+        </action>
+        <action name="LoadAreaAction" class="khanh.actions.LoadAreaAction">
+            <result name="success" >search_page.jsp</result>
+        </action>
+        <action name="SearchHotelNameAction" class="khanh.actions.SearchHotelNameAction" >
+            <result name="success">list_hotel.jsp</result>
+        </action>
+        <action name="RegisterUserAction" class="khanh.actions.RegisterUserAction">
+            <exception-mapping exception="java.sql.SQLException" result = "input"/>
+            <result name="input">register_user.jsp</result>
+            <result name="success">login.jsp</result>
+            <result name="error">search_page.jsp</result>
+        </action>
+        <action name="LoginAction" class="khanh.actions.LoginAction">
+            <exception-mapping exception="java.sql.SQLException" result = "input"/>
+            <result name="input">login.jsp</result>
+            <result name="success">search_page.jsp</result>
+            <result name="error">login.jsp</result>
+        </action>
+        <action name="SearchHotelAction" class="khanh.actions.SearchHotelAction">
+            <result name="success">list_hotel.jsp</result>
+        </action>
+        <action name="EditHotelAction" class="khanh.actions.EditHotelAction">
+            <result name="error">error.jsp</result>
+            <result name="success">detail_hotel.jsp</result>
+        </action>
+        <action name="LogOutAction" class="khanh.actions.LogOutAction">
+            <result name="success" type="redirectAction">
+                <param name="actionName">LoadAreaAction</param>
+            </result>
+        </action>
+        <action name="AddCartAction" class="khanh.actions.AddCartAction">
+            <result name="success">view_cart.jsp</result>
+            <result name="error">error.jsp</result>
+        </action>
+        <action name="UpdateCartAction" class="khanh.actions.UpdateCartAction">
+            <result name="success">view_cart.jsp</result>
+            <result name="error">error.jsp</result>
+        </action>
+        <action name="DeleteCartAction" class="khanh.actions.DeleteCartAction">
+            <result name="success">view_cart.jsp</result>
+        </action>
+        <action name="CheckSaleAction" class="khanh.actions.CheckSaleAction">
+            <result name="success">view_cart.jsp</result>
+        </action>
+        <action name="ProcessBookingAction" class="khanh.actions.ProcessBookingAction">
+            <result name="error" type="redirectAction">
+                <param name="actionName">LogOutAction</param>
+            </result>
+            <result name="success">confirm_cart.jsp</result>
+        </action>
+        <action name="CheckEmptyRoomAction" class="khanh.actions.CheckEmptyRoomAction">
+            <result name="success" type="redirectAction">
+                <param name="actionName">CreateConfirmCodeAction</param>
+            </result>
+            <result name="error">error.jsp</result>
+            <result name="invalid">view_cart.jsp</result>
+        </action>
+        <action name="SearchOrderByDateAction" class="khanh.actions.SearchOrderByDateAction">
+            <result name="success">view_order.jsp</result>
+        </action>
+        <action name="SearchDetailOrderAction" class="khanh.actions.SearchDetailOrderAction">
+            <result name="success">view_detailorder.jsp</result>
+        </action>
+        <action name="CreateFeedBackAction" class="khanh.actions.CreateFeedBackAction">
+            <result name="success">write_feedback.jsp</result>
+        </action>
+        <action name="InsertFeedBackAction" class="khanh.actions.InsertFeedBackAction">
+            <result name="error">error.jsp</result>
+            <result name="success">success.jsp</result>
+        </action>
+        <action name="CreateConfirmCodeAction" class="khanh.actions.CreateConfirmCodeAction">
+            <result name="success">confirm_code.jsp</result>
+            <result name="error">error.jsp</result>
+        </action>
+        <action name="CheckConfirmCodeAction" class="khanh.actions.CheckConfirmCodeAction">
+            <result name="success" type="redirectAction">
+                <param name="actionName">OrderRoomAction</param>
+            </result>
+            <result name="error">error.jsp</result>
+        </action>
+        <action name="OrderRoomAction" class="khanh.actions.OrderRoomAction">
+            <result name="success">view_order.jsp</result>
+            <result name="error">error.jsp</result>
+        </action>
+    </package>
+</struts>
